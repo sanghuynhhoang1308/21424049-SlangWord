@@ -32,21 +32,16 @@ import javax.swing.table.DefaultTableCellRenderer;
 public class ListSlangWord extends JFrame implements ActionListener{
     JButton btnBack;
 	JTable jt;
-//	SlangWordDetail slangWord;
-//	String dataCopy[][];
+	SlangWordDetail slangWord;
+	String data[][];
 
 	public ListSlangWord() throws Exception {
 		Container con = this.getContentPane();
-		//slangWord = SlangWordDetail.getInstance();
+		slangWord = SlangWordDetail.getInstance();
 
 		// Label
 		JLabel titleLabel = new JLabel();
-//		JLabel label = new JLabel("21424049- LIST SlangWord");
-//		label.setForeground(Color.red);
-//		label.setFont(new Font("Serif", Font.PLAIN, 25));
-//		label.setAlignmentX(CENTER_ALIGNMENT);
-		// titleLabel.setBackground(Color.black);
-		// titleLabel.setOpaque(true);
+
 
 		// Label
 		JLabel resultLabel = new JLabel();
@@ -60,9 +55,13 @@ public class ListSlangWord extends JFrame implements ActionListener{
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 		//
+                String data[][] = slangWord.getData();
+		data = slangWord.getData();
+		String column[] = { "STT", "Slag", "Meaning" };
+		
+		jt = new JTable(data, column);
                 
                 
-                jt = new JTable(20,20);
                 
                 //
 		jt.setRowHeight(30);
