@@ -39,7 +39,7 @@ public class Menu extends JFrame implements ActionListener{
 		// label.addMouseListener(this);
 		// A Grid
 		btn1 = new JButton("1. List SlangWords");
-		//btn1.addActionListener(this);
+                btn1.addActionListener(this);
 		btn1.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn1.setFocusable(false);
 
@@ -114,6 +114,15 @@ public class Menu extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+                if (e.getSource() == btn1) {
+			this.dispose();
+			try {
+				new ListSlangWord();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} 
 //		
 	}
 
