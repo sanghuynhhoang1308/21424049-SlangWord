@@ -5,6 +5,7 @@
 package pkg21424049_slangword;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -22,13 +23,14 @@ public class SlangWordDetail {
     private TreeMap<String, List<String>> map = new TreeMap<>();
     private int sizeMap;
     private String file_slangword = "slang.txt";
+    private String file_slangwordedit = "slangedit.txt";
 
     private SlangWordDetail() {
         try {
             String current = new java.io.File(".").getCanonicalPath();
             System.out.println("Current dir:" + current);
             file_slangword = current + "\\" + file_slangword;
-
+            file_slangwordedit = current + "\\" + file_slangwordedit;
             readFile(file_slangword);
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -85,6 +87,36 @@ public class SlangWordDetail {
         scanner.close();
     }
 
+    void luuFile(String file) {
+        try {
+            PrintWriter printWriter = new PrintWriter(new File(file));
+            StringBuilder strbuild = new StringBuilder();
+
+            strbuild.append("Slag`Meaning\n");
+            String slang[][] = new String[map.size()][3];
+            Set<String> keySet = map.keySet();
+            Object[] arraytemp = keySet.toArray();
+            for (int i = 0; i < map.size(); i++) {
+                Integer in = i + 1;
+                slang[i][0] = in.toString();
+                slang[i][1] = (String) arraytemp[i];
+                List<String> meaning = map.get(arraytemp[i]);
+                strbuild.append(slang[i][1] + "`" + meaning.get(0));
+                for (int j = 1; j < meaning.size(); j++) {
+                    strbuild.append("|" + meaning.get(j));
+                }
+                strbuild.append("\n");
+            }
+
+            printWriter.write(strbuild.toString());
+            printWriter.close();
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println(e);
+        }
+    }
+
     public String[][] getData() {
         String slang[][] = new String[sizeMap][3];
         Set<String> slagListSet = map.keySet();
@@ -109,26 +141,45 @@ public class SlangWordDetail {
         }
         return slang;
     }
+
     public String[] RandomSlang() {
-		// Random a number
-		int minimun = 0;
-		int maximun = map.size() - 1;
-		int rmath = randommath(minimun, maximun);
-		// Get slang meaning
-		String s[] = new String[2];
-		int index = 0;
-		for (String key : map.keySet()) {
-			// System.out.println(key);
-			if (index == rmath) {
-				s[0] = key;
-				s[1] = map.get(key).get(0);
-				break;
-			}
-			index++;
-		}
-		return s;
-	}
+        // Random a number
+        int minimun = 0;
+        int maximun = map.size() - 1;
+        int rmath = randommath(minimun, maximun);
+        // Get slang meaning
+        String s[] = new String[2];
+        int index = 0;
+        for (String key : map.keySet()) {
+            // System.out.println(key);
+            if (index == rmath) {
+                s[0] = key;
+                s[1] = map.get(key).get(0);
+                break;
+            }
+            index++;
+        }
+        return s;
+    }
+
     public static int randommath(int minimum, int maximum) {
-		return (minimum + (int) (Math.random() * maximum));
-	}
+        return (minimum + (int) (Math.random() * maximum));
+    }
+
+    String[][] setText(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void delete(String slag, String value) {
+        List<String> meaningList = map.get(slag);
+        int index = meaningList.indexOf(value);
+        if (meaningList.size() == 1) {
+            map.remove(slag);
+        } else {
+            meaningList.remove(index);
+            map.put(slag, meaningList);
+        }
+        sizeMap--;
+        this.luuFile(file_slangwordedit);
+    }
 }
