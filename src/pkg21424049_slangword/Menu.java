@@ -64,7 +64,7 @@ public class Menu extends JFrame implements ActionListener{
 		btn5.setFocusable(false);
 
 		btn6 = new JButton("6. Delete SlangWord");
-		//btn6.addActionListener(this);
+		btn6.addActionListener(this);
 		btn6.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn6.setFocusable(false);
 
@@ -137,7 +137,15 @@ public class Menu extends JFrame implements ActionListener{
 			new RandomSlangWord();
 
 		}
-//		
-	}
+                else if (e.getSource() == btn6) {
+			this.dispose();
+			try {
+				new DeleteSlangWord();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+                }}
 
 }

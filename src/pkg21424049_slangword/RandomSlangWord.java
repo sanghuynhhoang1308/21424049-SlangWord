@@ -50,7 +50,7 @@ public class RandomSlangWord extends JFrame implements ActionListener {
 		lbel2 = new JLabel(s[0]);
 		JLabel lbel3 = new JLabel("\n: \t");
 		lbel4 = new JLabel(s[1]);
-		lbel2.setForeground(Color.YELLOW);
+		lbel2.setForeground(Color.black);
 		lbel4.setForeground(Color.red);
 		lbel1.setFont(new Font("Serif", Font.PLAIN, 30));
 		lbel2.setFont(new Font("Serif", Font.BOLD, 30));

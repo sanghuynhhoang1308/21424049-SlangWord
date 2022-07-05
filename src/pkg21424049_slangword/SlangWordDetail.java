@@ -121,7 +121,7 @@ public class SlangWordDetail {
 			// System.out.println(key);
 			if (index == rmath) {
 				s[0] = key;
-				s[1] = key;
+				s[1] = map.get(key).get(0);
 				break;
 			}
 			index++;
