@@ -43,13 +43,7 @@ public class ListSlangWord extends JFrame implements ActionListener{
 		JLabel titleLabel = new JLabel();
 
 
-		// Label
-		JLabel resultLabel = new JLabel();
-		resultLabel.setForeground(Color.black);
-		resultLabel.setFont(new Font("Gill Sans MT", Font.PLAIN, 18));
-		resultLabel.setAlignmentX(CENTER_ALIGNMENT);
-		// resultLabel.setBackground(Color.blue);
-		// resultLabel.setOpaque(true);
+		
 
 		// List Slang Words
 		JPanel panelTable = new JPanel();
@@ -90,7 +84,7 @@ public class ListSlangWord extends JFrame implements ActionListener{
 		con.add(Box.createRigidArea(new Dimension(0, 10)));
 		con.add(titleLabel);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
-		con.add(resultLabel);
+		
 		con.add(Box.createRigidArea(new Dimension(0, 20)));
 		con.add(panelTable);
 		con.add(Box.createRigidArea(new Dimension(0, 20)));

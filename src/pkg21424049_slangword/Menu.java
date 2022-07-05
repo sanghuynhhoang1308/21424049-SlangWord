@@ -44,7 +44,7 @@ public class Menu extends JFrame implements ActionListener{
 		btn1.setFocusable(false);
 
 		btn2 = new JButton("2. Find Slang word");
-		//btn2.addActionListener(this);
+		btn2.addActionListener(this);
 		btn2.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn2.setFocusable(false);
 
@@ -54,7 +54,7 @@ public class Menu extends JFrame implements ActionListener{
 		btn3.setFocusable(false);
 
 		btn4 = new JButton("4. Random SlangWord");
-		//btn4.addActionListener(this);
+		btn4.addActionListener(this);
 		btn4.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn4.setFocusable(false);
 
@@ -122,7 +122,21 @@ public class Menu extends JFrame implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		} 
+		} else if (e.getSource() == btn2) {
+			System.out.println("Find SlangWord");
+			this.dispose();
+			try {
+				//new FindSWFrame();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+
+		} else if (e.getSource() == btn4) {
+			this.dispose();
+			new RandomSlangWord();
+
+		}
 //		
 	}
 

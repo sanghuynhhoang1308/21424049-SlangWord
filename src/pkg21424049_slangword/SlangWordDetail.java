@@ -109,4 +109,26 @@ public class SlangWordDetail {
         }
         return slang;
     }
+    public String[] RandomSlang() {
+		// Random a number
+		int minimun = 0;
+		int maximun = map.size() - 1;
+		int rmath = randommath(minimun, maximun);
+		// Get slang meaning
+		String s[] = new String[2];
+		int index = 0;
+		for (String key : map.keySet()) {
+			// System.out.println(key);
+			if (index == rmath) {
+				s[0] = key;
+				s[1] = key;
+				break;
+			}
+			index++;
+		}
+		return s;
+	}
+    public static int randommath(int minimum, int maximum) {
+		return (minimum + (int) (Math.random() * maximum));
+	}
 }
