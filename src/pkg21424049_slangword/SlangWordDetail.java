@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
@@ -188,5 +189,41 @@ public class SlangWordDetail {
 		sizeMap++;
 		map.put(slang, mean);
 		this.luuFile(file_slangwordedit);
+	}
+    public String[][] getMean(String key) {
+		List<String> lstMean = map.get(key);
+		if (lstMean == null)
+			return null;
+		int size = lstMean.size();
+		String s[][] = new String[size][3];
+		for (int i = 0; i < size; i++) {
+			s[i][0] = String.valueOf(i);
+			s[i][1] = key;
+			s[i][2] = lstMean.get(i);
+		}
+		return s;
+	}
+    public String[][] Definition(String query) {
+		// Get all slang contain key
+		List<String> keyList = new ArrayList<>();
+		List<String> listmean = new ArrayList<>();
+		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+			List<String> meaning = entry.getValue();
+			for (int i = 0; i < meaning.size(); i++) {
+				if (meaning.get(i).toLowerCase().contains(query.toLowerCase())) {
+					keyList.add(entry.getKey());
+					listmean.add(meaning.get(i));
+				}
+			}
+		}
+		int size = keyList.size();
+		String slang[][] = new String[size][3];
+
+		for (int i = 0; i < size; i++) {
+			slang[i][0] = String.valueOf(i);
+			slang[i][1] = keyList.get(i);
+			slang[i][2] = listmean.get(i);
+		}
+		return slang;
 	}
 }
