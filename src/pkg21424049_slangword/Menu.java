@@ -26,7 +26,7 @@ import javax.swing.JPanel;
  * @author Huynh Hoang Sang
  */
 public class Menu extends JFrame implements ActionListener{
-    JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
+    JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,btn9;
 	//SlangWord slangWord;
 
 	Menu() {
@@ -43,7 +43,7 @@ public class Menu extends JFrame implements ActionListener{
 		btn1.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn1.setFocusable(false);
 
-		btn2 = new JButton("2. Find Slang word");
+		btn2 = new JButton("2. Find SlangWord");
 		btn2.addActionListener(this);
 		btn2.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn2.setFocusable(false);
@@ -77,6 +77,12 @@ public class Menu extends JFrame implements ActionListener{
 		//btn8.addActionListener(this);
 		btn8.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn8.setFocusable(false);
+                
+                
+                btn9 = new JButton("9. Edit Slang");
+		//btn8.addActionListener(this);
+		btn9.setFont(new Font("Serif", Font.PLAIN, 14));
+		btn9.setFocusable(false);
 
 		JPanel panelCenter = new JPanel();
 		// panelCenter.setBackground(Color.gray);
@@ -89,6 +95,7 @@ public class Menu extends JFrame implements ActionListener{
 		panelCenter.add(btn6);
 		panelCenter.add(btn7);
 		panelCenter.add(btn8);
+                panelCenter.add(btn9);
 
 		Dimension size2 = new Dimension(500, 500);
 		panelCenter.setMaximumSize(size2);
@@ -105,7 +112,7 @@ public class Menu extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Menu Form");
 		this.setVisible(true);
-		this.setSize(800, 760);
+		this.setSize(800, 650);
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
 
@@ -123,6 +130,17 @@ public class Menu extends JFrame implements ActionListener{
 				e1.printStackTrace();
 			}
 		}
+                else if (e.getSource() == btn2) {
+			System.out.println("Change Actitity");
+			this.dispose();
+			try {
+				new FindSlangWord();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+                }
+                
                  else if (e.getSource() == btn3) {
 			this.dispose();
 			new AddSlangWord();}
