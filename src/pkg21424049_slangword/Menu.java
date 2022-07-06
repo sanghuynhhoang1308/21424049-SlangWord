@@ -49,7 +49,7 @@ public class Menu extends JFrame implements ActionListener{
 		btn2.setFocusable(false);
 
 		btn3 = new JButton("3. Add New SlangWord");
-		//btn3.addActionListener(this);
+		btn3.addActionListener(this);
 		btn3.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn3.setFocusable(false);
 
@@ -122,7 +122,15 @@ public class Menu extends JFrame implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		} else if (e.getSource() == btn2) {
+		}
+                 else if (e.getSource() == btn3) {
+			this.dispose();
+			new AddSlangWord();}
+                
+                
+                
+                
+                else if (e.getSource() == btn2) {
 			System.out.println("Find SlangWord");
 			this.dispose();
 			try {
