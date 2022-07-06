@@ -33,7 +33,7 @@ public class AddSlangWord extends JFrame implements ActionListener {
     JTextField tfMean, tfSlang;
 
     AddSlangWord() {
-        
+
         slangWord = SlangWordDetail.getInstance();
         Container con = this.getContentPane();
         JLabel titleLabel = new JLabel();
@@ -82,10 +82,10 @@ public class AddSlangWord extends JFrame implements ActionListener {
         form.add(pnlslang);
         con.add(Box.createRigidArea(new Dimension(0, 10)));
         form.add(pnlmean);
-        
+
         JPanel bottomPanel = new JPanel();
         btnBack = new JButton("Back ");
-        
+
         btnBack.setFocusable(false);
         btnBack.addActionListener(this);
         btnBack.setAlignmentX(CENTER_ALIGNMENT);
@@ -110,13 +110,33 @@ public class AddSlangWord extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.pack();
-       
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+        if (e.getSource() == btnBack) {
+            this.dispose();
+            new Menu();
+        } else if (e.getSource() == btnAdd) {
+            String slang = tfSlang.getText();
+            String mean = tfMean.getText();
+            if (slang.isEmpty() || mean.isEmpty()) {
+                // custom title, error icon
+                JOptionPane.showMessageDialog(this, "Ban chua nhap Slang hoac Mean", "error",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            System.out.println(slang + ": " + mean);
+
+            // Add new slag
+            slangWord.add(slang, mean);
+            JOptionPane.showMessageDialog(this, "Them slangword thanh cong");
+
+            tfSlang.setText("");
+            tfMean.setText("");
+        }
     }
 
 }

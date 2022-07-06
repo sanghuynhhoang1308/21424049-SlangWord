@@ -51,7 +51,7 @@ public class SlangWordDetail {
 
     void readFile(String file) throws Exception {
         map.clear();
-        String slag = null;
+        String slang = null;
         Scanner scanner = new Scanner(new File(file));
         scanner.useDelimiter("`");
         scanner.next();
@@ -62,11 +62,11 @@ public class SlangWordDetail {
         sizeMap = 0;
         while (scanner.hasNext()) {
             List<String> meaning = new ArrayList<String>();
-            slag = part[1].trim();
+            slang = part[1].trim();
             temp = scanner.next();
             part = temp.split("\n");
-            if (map.containsKey(slag)) {
-                meaning = map.get(slag);
+            if (map.containsKey(slang)) {
+                meaning = map.get(slang);
             }
             if (part[0].contains("|")) {
                 System.out.println(part[0]);
@@ -79,8 +79,8 @@ public class SlangWordDetail {
             } else {
                 meaning.add(part[0]);
             }
-            // map.put(slag.trim(), meaning);
-            map.put(slag, meaning);
+            // map.put(slang.trim(), meaning);
+            map.put(slang, meaning);
             i++;
             sizeMap++;
         }
@@ -119,13 +119,13 @@ public class SlangWordDetail {
 
     public String[][] getData() {
         String slang[][] = new String[sizeMap][3];
-        Set<String> slagListSet = map.keySet();
-        Object[] slagList = slagListSet.toArray();
+        Set<String> slangListSet = map.keySet();
+        Object[] slangList = slangListSet.toArray();
         int index = 0;
         for (int i = 0; i < sizeMap; i++) {
             slang[i][0] = String.valueOf(i);
-            slang[i][1] = (String) slagList[index];
-            List<String> meaning = map.get(slagList[index]);
+            slang[i][1] = (String) slangList[index];
+            List<String> meaning = map.get(slangList[index]);
             slang[i][2] = meaning.get(0);
 
             for (int j = 1; j < meaning.size(); j++) {
@@ -133,7 +133,7 @@ public class SlangWordDetail {
                     i++;
                 }
                 slang[i][0] = String.valueOf(i);
-                slang[i][1] = (String) slagList[index];
+                slang[i][1] = (String) slangList[index];
                 slang[i][2] = meaning.get(j);
 
             }
@@ -170,16 +170,23 @@ public class SlangWordDetail {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void delete(String slag, String value) {
-        List<String> meaningList = map.get(slag);
-        int index = meaningList.indexOf(value);
-        if (meaningList.size() == 1) {
-            map.remove(slag);
+    public void delete(String slang, String value) {
+        List<String> mean = map.get(slang);
+        int index = mean.indexOf(value);
+        if (mean.size() == 1) {
+            map.remove(slang);
         } else {
-            meaningList.remove(index);
-            map.put(slag, meaningList);
+            mean.remove(index);
+            map.put(slang, mean);
         }
         sizeMap--;
         this.luuFile(file_slangwordedit);
     }
+    public void add(String slang, String meaning) {
+		List<String> mean = new ArrayList<>();
+		mean.add(meaning);
+		sizeMap++;
+		map.put(slang, mean);
+		this.luuFile(file_slangwordedit);
+	}
 }

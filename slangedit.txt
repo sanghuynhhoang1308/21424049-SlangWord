@@ -1,4 +1,6 @@
 Slag`Meaning
+#1`Number one
+$`Dollar| money
 $_$`Has money
 %)`Drunk| giddy
 &`And
@@ -5720,6 +5722,7 @@ SARCY`Sarcastic
 SARGE`Chat up
 SARKY`Sarcastic
 SAS`Special Air Service
+SASA`Toi Ten Sang
 SASE`Self-Addressed, Stamped Envelope
 SAT`Scholastic Assessment Test
 SATA`Serial Advanced Technology Attachment
