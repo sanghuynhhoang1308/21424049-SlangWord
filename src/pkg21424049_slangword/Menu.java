@@ -18,6 +18,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 //import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -27,7 +28,7 @@ import javax.swing.JPanel;
  */
 public class Menu extends JFrame implements ActionListener{
     JButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8,btn9;
-	//SlangWord slangWord;
+	SlangWordDetail slangWord;
 
 	Menu() {
 		//slangWord = SlangWord.getInstance();
@@ -36,7 +37,7 @@ public class Menu extends JFrame implements ActionListener{
 		label.setForeground(Color.red);
 		label.setFont(new Font("Serif", Font.PLAIN, 25));
 		label.setAlignmentX(CENTER_ALIGNMENT);
-		// label.addMouseListener(this);
+	
 		// A Grid
 		btn1 = new JButton("1. List SlangWords");
                 btn1.addActionListener(this);
@@ -69,7 +70,7 @@ public class Menu extends JFrame implements ActionListener{
 		btn6.setFocusable(false);
 
 		btn7 = new JButton("7. Reset SlangWord");
-		//btn7.addActionListener(this);
+		btn7.addActionListener(this);
 		btn7.setFont(new Font("Serif", Font.PLAIN, 14));
 		btn7.setFocusable(false);
 
@@ -172,6 +173,16 @@ public class Menu extends JFrame implements ActionListener{
 				e1.printStackTrace();
 			}
 		
-                }}
+                }
+                 else if (e.getSource() == btn7) {
+			// default icon, custom title
+			int n = JOptionPane.showConfirmDialog(this, "Ban co thuc su muon reset danh sach SlangWord?", "An Inane Question",
+					JOptionPane.YES_NO_OPTION);
+			if (n == 0) {
+				slangWord.reset();
+				JOptionPane.showMessageDialog(this, "Reset success.");
+			}
+        }
+        }
 
 }

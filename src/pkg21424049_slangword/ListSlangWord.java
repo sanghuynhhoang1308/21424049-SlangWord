@@ -42,11 +42,9 @@ public class ListSlangWord extends JFrame implements ActionListener {
 
         // Label
         JLabel titleLabel = new JLabel();
-
         // List Slang Words
         JPanel panelTable = new JPanel();
         panelTable.setBackground(Color.black);
-        //
         String data[][] = slangWord.getData();
         data = slangWord.getData();
         String column[] = {"STT", "Slang", "Mean"};
@@ -73,8 +71,6 @@ public class ListSlangWord extends JFrame implements ActionListener {
         btnBack.setFocusable(false);
         btnBack.setAlignmentX(CENTER_ALIGNMENT);
         bottomPanel.add(btnBack);
-
-        
         con.setLayout(new BoxLayout(con, BoxLayout.Y_AXIS));
         con.add(Box.createRigidArea(new Dimension(0, 10)));
         con.add(titleLabel);

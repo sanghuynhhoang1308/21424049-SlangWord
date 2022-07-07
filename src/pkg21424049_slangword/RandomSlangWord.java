@@ -56,7 +56,6 @@ public class RandomSlangWord extends JFrame implements ActionListener {
 		lbel2.setFont(new Font("Serif", Font.BOLD, 30));
 		lbel3.setFont(new Font("Serif", Font.PLAIN, 30));
 		lbel4.setFont(new Font("Serif", Font.ITALIC, 30));
-		// slangLabel.setFont(new Font("Serif", Font.PLAIN, 35));
 		slangPanel.add(lbel1);
 		slangPanel.add(lbel2);
 		slangPanel.add(lbel3);

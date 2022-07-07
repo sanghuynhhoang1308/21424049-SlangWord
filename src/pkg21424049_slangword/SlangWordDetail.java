@@ -203,8 +203,8 @@ public class SlangWordDetail {
 		}
 		return s;
 	}
-    public String[][] Definition(String query) {
-		// Get all slang contain key
+    public String[][] defintion(String query) {
+		
 		List<String> keyList = new ArrayList<>();
 		List<String> listmean = new ArrayList<>();
 		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
@@ -225,5 +225,14 @@ public class SlangWordDetail {
 			slang[i][2] = listmean.get(i);
 		}
 		return slang;
+	}
+    public void reset() {
+		try {
+			readFile(file_slangword);
+			this.luuFile(file_slangwordedit);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
