@@ -5,6 +5,7 @@
 package pkg21424049_slangword;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -191,6 +192,7 @@ public class SlangWordDetail {
 		this.luuFile(file_slangwordedit);
 	}
     public String[][] getMean(String key) {
+        
 		List<String> lstMean = map.get(key);
 		if (lstMean == null)
 			return null;
@@ -235,4 +237,31 @@ public class SlangWordDetail {
 			e.printStackTrace();
 		}
 	}
+    
+     public void edit(String slang, String value)  {
+//        int size = lstSinhVien.size();
+//        for (int i = 0; i < size; i++) {
+//            if (lstSinhVien.get(i).getMHS().equals(student.getMHS())) {
+//                lstSinhVien.get(i).setTenHS(student.getTenHS());
+//                lstSinhVien.get(i).setDiem(student.getDiem());
+//                lstSinhVien.get(i).setDiaChi(student.getDiaChi());
+//                lstSinhVien.get(i).setGhiChu(student.getGhiChu());
+//                WriteFile();
+//                break;
+//            }
+//        }
+        
+        
+        List<String> mean = map.get(slang);
+        int index = mean.indexOf(value);
+        if (mean.size() == 1) {
+            map.get(slang);
+        } else {
+            mean.get(index);
+            map.put(slang, mean);
+        }
+        
+        this.luuFile(file_slangwordedit);
+        
+    }
 }
