@@ -63,7 +63,7 @@ public class Menu extends JFrame implements ActionListener {
         btn4.setFocusable(false);
 
         btn5 = new JButton("5. History Search");
-        //btn5.addActionListener(this);
+        btn5.addActionListener(this);
         btn5.setFont(new Font("Serif", Font.PLAIN, 14));
         btn5.setFocusable(false);
 
@@ -165,8 +165,13 @@ public class Menu extends JFrame implements ActionListener {
         } else if (e.getSource() == btn4) {
             this.dispose();
             new RandomSlangWord();
-
-        } else if (e.getSource() == btn6) {
+            
+        } 
+        
+        else if (e.getSource() == btn5) {
+			this.dispose();
+			new HistoryFind();}
+        else if (e.getSource() == btn6) {
             this.dispose();
             try {
                 new DeleteSlangWord();

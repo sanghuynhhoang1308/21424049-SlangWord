@@ -5,6 +5,7 @@
 package pkg21424049_slangword;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class SlangWordDetail {
     private int sizeMap;
     private String file_slangword = "slang.txt";
     private String file_slangwordedit = "slangedit.txt";
+    private String fils_historyfind = "historyfind.txt";
 
     private SlangWordDetail() {
         try {
@@ -33,6 +35,7 @@ public class SlangWordDetail {
             System.out.println("Current dir:" + current);
             file_slangword = current + "\\" + file_slangword;
             file_slangwordedit = current + "\\" + file_slangwordedit;
+            fils_historyfind = current + "\\" + fils_historyfind;
             readFile(file_slangword);
         } catch (Exception e) {
             // TODO Auto-generated catch block
@@ -239,18 +242,6 @@ public class SlangWordDetail {
 	}
     
      public void edit(String slang, String value)  {
-//        int size = lstSinhVien.size();
-//        for (int i = 0; i < size; i++) {
-//            if (lstSinhVien.get(i).getMHS().equals(student.getMHS())) {
-//                lstSinhVien.get(i).setTenHS(student.getTenHS());
-//                lstSinhVien.get(i).setDiem(student.getDiem());
-//                lstSinhVien.get(i).setDiaChi(student.getDiaChi());
-//                lstSinhVien.get(i).setGhiChu(student.getGhiChu());
-//                WriteFile();
-//                break;
-//            }
-//        }
-        
         
         List<String> mean = map.get(slang);
         int index = mean.indexOf(value);
@@ -268,18 +259,6 @@ public class SlangWordDetail {
      
      
       public void edittest(String slang, String value)  {
-//        int size = lstSinhVien.size();
-//        for (int i = 0; i < size; i++) {
-//            if (lstSinhVien.get(i).getMHS().equals(student.getMHS())) {
-//                lstSinhVien.get(i).setTenHS(student.getTenHS());
-//                lstSinhVien.get(i).setDiem(student.getDiem());
-//                lstSinhVien.get(i).setDiaChi(student.getDiaChi());
-//                lstSinhVien.get(i).setGhiChu(student.getGhiChu());
-//                WriteFile();
-//                break;
-//            }
-//        }
-        
         
         List<String> mean = map.get(slang);
         int index = mean.indexOf(value);
@@ -293,5 +272,41 @@ public class SlangWordDetail {
         this.luuFile(file_slangwordedit);
         
     }
+      public void saveHistoryFind(String slag, String meaning) throws Exception {
+		File filehistory = new File(fils_historyfind);
+		FileWriter fr = new FileWriter(filehistory, true);
+		fr.write(slag + "`" + meaning + "\n");
+		fr.close();
+	}
+
+      public String[][] readHistoryFind() {
+		List<String> historySlang = new ArrayList<>();
+		List<String> historyMean = new ArrayList<>();
+		try {
+			Scanner scanner = new Scanner(new File(fils_historyfind));
+			scanner.useDelimiter("`");
+			String temp = scanner.next();
+			String[] part = scanner.next().split("\n");
+			historySlang.add(temp);
+			historyMean.add(part[0]);
+			while (scanner.hasNext()) {
+				temp = part[1];
+				part = scanner.next().split("\n");
+				historySlang.add(temp);
+				historyMean.add(part[0]);
+			}
+			scanner.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		int size = historySlang.size();
+		String s[][] = new String[size][3];
+		for (int i = 0; i < size; i++) {
+			s[size - i - 1][0] = String.valueOf(size - i);
+			s[size - i - 1][1] = historySlang.get(i);
+			s[size - i - 1][2] = historyMean.get(i);
+		}
+		return s;
+	}
      
 }

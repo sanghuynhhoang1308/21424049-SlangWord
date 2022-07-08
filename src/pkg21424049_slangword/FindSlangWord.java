@@ -162,6 +162,14 @@ public class FindSlangWord extends JFrame implements ActionListener {
                     String ss[] = result[i];
                     model.addRow(ss);
                 }
+                
+                try {
+				for (int ii = 0; ii < temp.length; ii++)
+					slangword.saveHistory(temp[ii][1], temp[ii][2]);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             }
         } else if (e.getSource() == btnBack) {
             this.dispose();
