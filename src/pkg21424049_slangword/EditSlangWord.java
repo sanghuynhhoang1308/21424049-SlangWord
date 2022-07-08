@@ -136,7 +136,7 @@ public class EditSlangWord extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setSize(800, 600);
-
+        btnEdit.addActionListener(new EditSlangWord.SuaListener());
     }
 
     @Override
@@ -190,10 +190,15 @@ public class EditSlangWord extends JFrame implements ActionListener {
     }
     private class SuaListener implements ActionListener {
 
+        
         @Override
         public void actionPerformed(ActionEvent e) {
+            int row = jt.getSelectedRow();
+             String Data = (String) jt.getValueAt(row, 1);
+           
+             slangword.edit(Data, (String) jt.getValueAt(row, 2));
             
+            //SetStateTable(slangword);
         }
-
     }
 }

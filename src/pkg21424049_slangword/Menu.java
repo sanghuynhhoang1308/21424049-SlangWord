@@ -86,10 +86,18 @@ public class Menu extends JFrame implements ActionListener {
         btn9.addActionListener(this);
         btn9.setFont(new Font("Serif", Font.PLAIN, 14));
         btn9.setFocusable(false);
-
+        btn1.setBackground(Color.getHSBColor(85, 162, 221));
+        btn2.setBackground(Color.getHSBColor(85, 162, 221));
+        btn3.setBackground(Color.getHSBColor(85, 162, 221));
+        btn4.setBackground(Color.getHSBColor(85, 162, 221));
+        btn5.setBackground(Color.getHSBColor(85, 162, 221));
+        btn6.setBackground(Color.getHSBColor(85, 162, 221));
+        btn7.setBackground(Color.getHSBColor(85, 162, 221));
+        btn8.setBackground(Color.getHSBColor(85, 162, 221));
+        btn9.setBackground(Color.getHSBColor(85, 162, 221));
         JPanel panelCenter = new JPanel();
         // panelCenter.setBackground(Color.gray);
-        panelCenter.setLayout(new GridLayout(4, 4, 10, 10));
+        panelCenter.setLayout(new GridLayout(9, 1, 12, 12));
         panelCenter.add(btn1);
         panelCenter.add(btn2);
         panelCenter.add(btn3);
