@@ -78,7 +78,7 @@ public class Menu extends JFrame implements ActionListener {
         btn7.setFocusable(false);
 
         btn8 = new JButton("8. Quiz");
-        //btn8.addActionListener(this);
+        btn8.addActionListener(this);
         btn8.setFont(new Font("Serif", Font.PLAIN, 14));
         btn8.setFocusable(false);
 
@@ -188,7 +188,14 @@ public class Menu extends JFrame implements ActionListener {
                 slangWord.reset();
                 JOptionPane.showMessageDialog(this, "Reset success.");
             }
-        } else if (e.getSource() == btn9) {
+        } 
+        
+        else if (e.getSource() == btn8) {
+			this.dispose();
+			new QuizzSlangWord();
+		}
+        
+        else if (e.getSource() == btn9) {
             this.dispose();
             try {
                 new EditSlangWord();

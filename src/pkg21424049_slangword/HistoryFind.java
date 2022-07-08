@@ -28,23 +28,23 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author Huynh Hoang Sang
  */
 public class HistoryFind extends JFrame implements ActionListener {
-	JButton btnBack, btnExit;
+	JButton btnBack;
 	SlangWordDetail slangWord = SlangWordDetail.getInstance();
 
 	HistoryFind() {
 		Container con = this.getContentPane();
 
 		// History
-		JLabel historyLabel = new JLabel();
-		historyLabel.setText("History Slagword Found");
-		historyLabel.setForeground(Color.green);
-		historyLabel.setFont(new Font("Gill Sans MT", Font.PLAIN, 35));
-		historyLabel.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel lblHistoryFind = new JLabel();
+		lblHistoryFind.setText("History Slagword Found");
+		lblHistoryFind.setForeground(Color.red);
+		lblHistoryFind.setFont(new Font("Serif", Font.PLAIN, 35));
+		lblHistoryFind.setAlignmentX(CENTER_ALIGNMENT);
 		// Table
 		JPanel panelTable = new JPanel();
 		panelTable.setBackground(Color.black);
 
-		String data[][] = slangWord.readHistory();
+		String data[][] = slangWord.readHistoryFind();
 		String column[] = { "STT", "Slang Word", "Definition" };
 		JTable jt = new JTable(data, column);
 		jt.setRowHeight(30);
@@ -58,22 +58,22 @@ public class HistoryFind extends JFrame implements ActionListener {
 		panelTable.setLayout(new GridLayout(1, 1));
 		panelTable.add(sp);
 
-		// 2 Button
+
 		JPanel bottomPanel = new JPanel();
 		btnBack = new JButton("Return");
-		btnExit = new JButton("Exit");
+		
 		btnBack.addActionListener(this);
-		btnExit.addActionListener(this);
+		
 		Dimension size2 = new Dimension(700, 50);
 		bottomPanel.setMaximumSize(size2);
 		bottomPanel.setPreferredSize(size2);
 		bottomPanel.setMinimumSize(size2);
 		bottomPanel.setLayout(new GridLayout(1, 2));
 		bottomPanel.add(btnBack);
-		bottomPanel.add(btnExit);
+		
 
 		con.setLayout(new BoxLayout(con, BoxLayout.Y_AXIS));
-		con.add(historyLabel);
+		con.add(lblHistoryFind);
 		con.add(Box.createRigidArea(new Dimension(0, 50)));
 		con.add(panelTable);
 		con.add(Box.createRigidArea(new Dimension(0, 50)));
@@ -90,9 +90,7 @@ public class HistoryFind extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if (e.getSource() == btnExit) {
-			System.exit(0);
-		} else if (e.getSource() == btnBack) {
+		 if (e.getSource() == btnBack) {
 			this.dispose();
 			new Menu();
 		}

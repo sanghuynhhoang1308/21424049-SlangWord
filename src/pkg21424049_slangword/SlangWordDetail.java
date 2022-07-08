@@ -308,5 +308,47 @@ public class SlangWordDetail {
 		}
 		return s;
 	}
+      public String[] quizSlang(int type) {
+		String s[] = new String[6];
+		if (type == 1) {
+			// Random a number
+			String[] slangRandom = this.RandomSlang();
+			s[0] = slangRandom[0];
+			int rand = randommath(1, 4);
+			s[rand] = slangRandom[1];
+			s[5] = slangRandom[1];
+			for (int i = 1; i <= 4; i++) {
+				if (rand == i)
+					continue;
+				else {
+					String[] slangRand = this.RandomSlang();
+					while (slangRand[0] == s[0]) {
+						slangRand = this.RandomSlang();
+					}
+					s[i] = slangRand[1];
+				}
+			}
+		} else {
+			// Random a number
+			String[] slangRandom = this.RandomSlang();
+			s[0] = slangRandom[1];
+			int rand = randommath(1, 4);
+			s[rand] = slangRandom[0];
+			s[5] = slangRandom[0];
+			for (int i = 1; i <= 4; i++) {
+				if (rand == i)
+					continue;
+				else {
+					String[] slangRand = this.RandomSlang();
+					while (slangRand[0] == s[0]) {
+						slangRand = this.RandomSlang();
+					}
+					s[i] = slangRand[0];
+				}
+			}
+		}
+
+		return s;
+	}
      
 }
