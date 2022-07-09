@@ -44,8 +44,7 @@ public class OptionQuizz extends JFrame implements ActionListener {
         questionLabel.setForeground(Color.black);
         questionLabel.setFont(new Font("Serif", Font.PLAIN, 18));
         questionLabel.setAlignmentX(CENTER_ALIGNMENT);
-       
-        
+
         btnTL1 = new JButton("A." + s[1]);
         btnTL1.addActionListener(this);
         btnTL1.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -100,9 +99,60 @@ public class OptionQuizz extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        if (e.getSource() == btnBack) {
+        if (e.getSource() == btnTL1) {
+            this.RightandWrong(1);
+        } else if (e.getSource() == btnTL2) {
+            this.RightandWrong(2);
+        } else if (e.getSource() == btnTL3) {
+            this.RightandWrong(3);
+        } else if (e.getSource() == btnTL4) {
+            this.RightandWrong(4);
+        } else if (e.getSource() == btnBack) {
             this.dispose();
             new QuizzSlangWord();
+        }
+    }
+
+    public void RightandWrong(int ans) {
+        if (s[ans].equals(s[5])) {
+            // default title and icon
+            JOptionPane.showMessageDialog(this, "CHUC MUNG BAN DA TRA L:OI DUNG.");
+
+        } else {
+            JOptionPane.showMessageDialog(this, "CAU TRA LOI CUA BAN SAI !!!", "Inane error", JOptionPane.ERROR_MESSAGE);
+            if (ans == 1) {
+                btnTL1.setBackground(Color.red);
+            } else if (ans == 2) {
+                btnTL2.setBackground(Color.red);
+            } else if (ans == 3) {
+                btnTL3.setBackground(Color.red);
+            } else if (ans == 4) {
+                btnTL4.setBackground(Color.red);
+            }
+        }
+        if (s[1].equals(s[5])) {
+            btnTL1.setEnabled(false);
+            btnTL1.setBackground(Color.green);
+        } else {
+            btnTL1.setEnabled(false);
+        }
+        if (s[2].equals(s[5])) {
+            btnTL2.setEnabled(false);
+            btnTL2.setBackground(Color.green);
+        } else {
+            btnTL2.setEnabled(false);
+        }
+        if (s[3].equals(s[5])) {
+            btnTL3.setEnabled(false);
+            btnTL3.setBackground(Color.green);
+        } else {
+            btnTL3.setEnabled(false);
+        }
+        if (s[4].equals(s[5])) {
+            btnTL4.setEnabled(false);
+            btnTL4.setBackground(Color.green);
+        } else {
+            btnTL4.setEnabled(false);
         }
     }
 

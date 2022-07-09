@@ -1,3 +1,15 @@
+BENJAMIN`$100 bill
+DIME`$10 of a drug
+DUB SACK`A $20 bag of marijuana
+STACK`$1000
+BENJAMIN`$100 bill
+DIME`$10 of a drug
+DUB SACK`A $20 bag of marijuana
+STACK`$1000
+BENJAMIN`$100 bill
+DIME`$10 of a drug
+DUB SACK`A $20 bag of marijuana
+STACK`$1000
 $` money
 $_$`Has money
 BREAD`Money

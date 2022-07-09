@@ -157,7 +157,7 @@ public class DeleteSlangWord extends JFrame implements ActionListener, ListSelec
             System.out.println("Tu duoc chon de Xoa la: " + Data);
 
             slangWord.delete(Data, (String) jtbl.getValueAt(row, 2));
-            // default title and icon
+           
             model.removeRow(row);
 
         }

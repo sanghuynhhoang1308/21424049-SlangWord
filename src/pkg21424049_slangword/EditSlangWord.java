@@ -34,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class EditSlangWord extends JFrame implements ActionListener {
 
-    JButton btnBack, btnFind, btnEdit , btnLuu;
+    JButton btnBack, btnFind, btnEdit, btnLuu;
     JTextField tf;
     JTable jt;
     DefaultTableModel model;
@@ -97,8 +97,7 @@ public class EditSlangWord extends JFrame implements ActionListener {
         bottomPanel.add(btnBack);
         btnBack.addActionListener(this);
         btnBack.setAlignmentX(CENTER_ALIGNMENT);
-        
-        
+
         btnEdit = new JButton("Edit ");
         btnEdit.addActionListener(this);
         btnEdit.setFocusable(false);
@@ -111,8 +110,7 @@ public class EditSlangWord extends JFrame implements ActionListener {
 //        btnEdit.addActionListener(this);
 //        btnEdit.setAlignmentX(CENTER_ALIGNMENT);
 //        
-        
-        
+
         btnLuu = new JButton("Luu ");
         // btnBack.addActionListener(this);
         btnLuu.setFocusable(false);
@@ -188,16 +186,20 @@ public class EditSlangWord extends JFrame implements ActionListener {
             new Menu();
         }
     }
+
     private class SuaListener implements ActionListener {
 
-        
         @Override
         public void actionPerformed(ActionEvent e) {
             int row = jt.getSelectedRow();
-             String Data = (String) jt.getValueAt(row, 1);
-           
-             slangword.edit(Data, (String) jt.getValueAt(row, 2));
-            
+            int col = jt.getSelectedColumn();
+            if (row == -1 || col == -1) {
+                return;
+            }
+            String Data = (String) jt.getValueAt(row, 1);
+
+            slangword.edit(Data, (String) jt.getValueAt(row, 2));
+
             //SetStateTable(slangword);
         }
     }

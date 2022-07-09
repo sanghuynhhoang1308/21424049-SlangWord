@@ -33,7 +33,7 @@ public class Menu extends JFrame implements ActionListener {
     SlangWordDetail slangWord;
 
     Menu() {
-        //slangWord = SlangWord.getInstance();
+        slangWord = SlangWordDetail.getInstance();
         // A Label
         JLabel label = new JLabel("21424049- SlangWord");
         label.setForeground(Color.red);
@@ -41,7 +41,7 @@ public class Menu extends JFrame implements ActionListener {
         label.setAlignmentX(CENTER_ALIGNMENT);
 
         // A Grid
-        btn1 = new JButton("1. List SlangWords");
+        btn1 = new JButton("1. List SlangWords Edit");
         btn1.addActionListener(this);
         btn1.setFont(new Font("Serif", Font.PLAIN, 14));
         btn1.setBackground(Color.getHSBColor(85, 162, 221));
@@ -52,17 +52,17 @@ public class Menu extends JFrame implements ActionListener {
         btn2.setFont(new Font("Serif", Font.PLAIN, 14));
         btn2.setFocusable(false);
 
-        btn3 = new JButton("3. Add New SlangWord");
+        btn3 = new JButton("3. History Search");
         btn3.addActionListener(this);
         btn3.setFont(new Font("Serif", Font.PLAIN, 14));
         btn3.setFocusable(false);
 
-        btn4 = new JButton("4. Random SlangWord");
+        btn4 = new JButton("4. Add new SlangWord");
         btn4.addActionListener(this);
         btn4.setFont(new Font("Serif", Font.PLAIN, 14));
         btn4.setFocusable(false);
 
-        btn5 = new JButton("5. History Search");
+        btn5 = new JButton("5.Edit SlangWord ");
         btn5.addActionListener(this);
         btn5.setFont(new Font("Serif", Font.PLAIN, 14));
         btn5.setFocusable(false);
@@ -72,17 +72,17 @@ public class Menu extends JFrame implements ActionListener {
         btn6.setFont(new Font("Serif", Font.PLAIN, 14));
         btn6.setFocusable(false);
 
-        btn7 = new JButton("7. Reset SlangWord");
+         btn7 = new JButton("7. Reset SlangWord");
         btn7.addActionListener(this);
         btn7.setFont(new Font("Serif", Font.PLAIN, 14));
         btn7.setFocusable(false);
 
-        btn8 = new JButton("8. Quiz");
+        btn8 = new JButton("8. Random SlangWord");
         btn8.addActionListener(this);
         btn8.setFont(new Font("Serif", Font.PLAIN, 14));
         btn8.setFocusable(false);
 
-        btn9 = new JButton("9. Edit Slang");
+        btn9 = new JButton("9. Quizz Slang");
         btn9.addActionListener(this);
         btn9.setFont(new Font("Serif", Font.PLAIN, 14));
         btn9.setFocusable(false);
@@ -149,7 +149,7 @@ public class Menu extends JFrame implements ActionListener {
                 // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
-        } else if (e.getSource() == btn3) {
+        } else if (e.getSource() == btn4) {
             this.dispose();
             new AddSlangWord();
         } else if (e.getSource() == btn2) {
@@ -162,16 +162,14 @@ public class Menu extends JFrame implements ActionListener {
                 e1.printStackTrace();
             }
 
-        } else if (e.getSource() == btn4) {
+        } else if (e.getSource() == btn8) {
             this.dispose();
             new RandomSlangWord();
-            
-        } 
-        
-        else if (e.getSource() == btn5) {
-			this.dispose();
-			new HistoryFind();}
-        else if (e.getSource() == btn6) {
+
+        } else if (e.getSource() == btn3) {
+            this.dispose();
+            new HistoryFind();
+        } else if (e.getSource() == btn6) {
             this.dispose();
             try {
                 new DeleteSlangWord();
@@ -188,14 +186,10 @@ public class Menu extends JFrame implements ActionListener {
                 slangWord.reset();
                 JOptionPane.showMessageDialog(this, "Reset success.");
             }
-        } 
-        
-        else if (e.getSource() == btn8) {
-			this.dispose();
-			new QuizzSlangWord();
-		}
-        
-        else if (e.getSource() == btn9) {
+        } else if (e.getSource() == btn9) {
+            this.dispose();
+            new QuizzSlangWord();
+        } else if (e.getSource() == btn5) {
             this.dispose();
             try {
                 new EditSlangWord();

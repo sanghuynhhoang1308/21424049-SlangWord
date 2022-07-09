@@ -36,7 +36,7 @@ public class SlangWordDetail {
             file_slangword = current + "\\" + file_slangword;
             file_slangwordedit = current + "\\" + file_slangwordedit;
             fils_historyfind = current + "\\" + fils_historyfind;
-            readFile(file_slangword);
+            readFile(file_slangwordedit);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -171,9 +171,9 @@ public class SlangWordDetail {
         return (minimum + (int) (Math.random() * maximum));
     }
 
-    String[][] setText(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+//    String[][] setText(String string) {
+//        throw new UnsupportedOperationException("Not supported yet."); 
+//    }
 
     public void delete(String slang, String value) {
         List<String> mean = map.get(slang);
@@ -187,62 +187,69 @@ public class SlangWordDetail {
         sizeMap--;
         this.luuFile(file_slangwordedit);
     }
+
     public void add(String slang, String meaning) {
-		List<String> mean = new ArrayList<>();
-		mean.add(meaning);
-		sizeMap++;
-		map.put(slang, mean);
-		this.luuFile(file_slangwordedit);
-	}
+        List<String> mean = new ArrayList<>();
+        mean.add(meaning);
+        sizeMap++;
+        map.put(slang, mean);
+        this.luuFile(file_slangwordedit);
+    }
+
     public String[][] getMean(String key) {
-        
-		List<String> lstMean = map.get(key);
-		if (lstMean == null)
-			return null;
-		int size = lstMean.size();
-		String s[][] = new String[size][3];
-		for (int i = 0; i < size; i++) {
-			s[i][0] = String.valueOf(i);
-			s[i][1] = key;
-			s[i][2] = lstMean.get(i);
-		}
-		return s;
-	}
+
+        List<String> lstMean = map.get(key);
+        if (lstMean == null) {
+            return null;
+        }
+        int size = lstMean.size();
+        String s[][] = new String[size][3];
+        for (int i = 0; i < size; i++) {
+            s[i][0] = String.valueOf(i);
+            s[i][1] = key;
+            s[i][2] = lstMean.get(i);
+        }
+        return s;
+    }
+
     public String[][] defintion(String query) {
-		
-		List<String> keyList = new ArrayList<>();
-		List<String> listmean = new ArrayList<>();
-		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-			List<String> meaning = entry.getValue();
-			for (int i = 0; i < meaning.size(); i++) {
-				if (meaning.get(i).toLowerCase().contains(query.toLowerCase())) {
-					keyList.add(entry.getKey());
-					listmean.add(meaning.get(i));
-				}
-			}
-		}
-		int size = keyList.size();
-		String slang[][] = new String[size][3];
 
-		for (int i = 0; i < size; i++) {
-			slang[i][0] = String.valueOf(i);
-			slang[i][1] = keyList.get(i);
-			slang[i][2] = listmean.get(i);
-		}
-		return slang;
-	}
+        List<String> keyList = new ArrayList<>();
+        List<String> listmean = new ArrayList<>();
+        for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+            List<String> meaning = entry.getValue();
+            for (int i = 0; i < meaning.size(); i++) {
+                if (meaning.get(i).toLowerCase().contains(query.toLowerCase())) {
+                    keyList.add(entry.getKey());
+                    listmean.add(meaning.get(i));
+                }
+            }
+        }
+        int size = keyList.size();
+        String slang[][] = new String[size][3];
+
+        for (int i = 0; i < size; i++) {
+            slang[i][0] = String.valueOf(i);
+            slang[i][1] = keyList.get(i);
+            slang[i][2] = listmean.get(i);
+        }
+        return slang;
+    }
+
     public void reset() {
-		try {
-			readFile(file_slangword);
-			this.luuFile(file_slangwordedit);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+        try {
+            readFile(file_slangword);
+            this.luuFile(file_slangwordedit);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     
-     public void edit(String slang, String value)  {
-        
+    
+
+    public void edit(String slang, String value) {
+
         List<String> mean = map.get(slang);
         int index = mean.indexOf(value);
         if (mean.size() == 1) {
@@ -251,15 +258,13 @@ public class SlangWordDetail {
             mean.get(index);
             map.put(slang, mean);
         }
-        
+
         this.luuFile(file_slangwordedit);
-        
+
     }
-     
-     
-     
-      public void edittest(String slang, String value)  {
-        
+
+    public void edittest(String slang, String value) {
+
         List<String> mean = map.get(slang);
         int index = mean.indexOf(value);
         if (mean.size() == 1) {
@@ -268,87 +273,89 @@ public class SlangWordDetail {
             mean.get(index);
             map.put(slang, mean);
         }
-        
+
         this.luuFile(file_slangwordedit);
-        
+
     }
-      public void saveHistoryFind(String slag, String meaning) throws Exception {
-		File filehistory = new File(fils_historyfind);
-		FileWriter fr = new FileWriter(filehistory, true);
-		fr.write(slag + "`" + meaning + "\n");
-		fr.close();
-	}
 
-      public String[][] readHistoryFind() {
-		List<String> historySlang = new ArrayList<>();
-		List<String> historyMean = new ArrayList<>();
-		try {
-			Scanner scanner = new Scanner(new File(fils_historyfind));
-			scanner.useDelimiter("`");
-			String temp = scanner.next();
-			String[] part = scanner.next().split("\n");
-			historySlang.add(temp);
-			historyMean.add(part[0]);
-			while (scanner.hasNext()) {
-				temp = part[1];
-				part = scanner.next().split("\n");
-				historySlang.add(temp);
-				historyMean.add(part[0]);
-			}
-			scanner.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		int size = historySlang.size();
-		String s[][] = new String[size][3];
-		for (int i = 0; i < size; i++) {
-			s[size - i - 1][0] = String.valueOf(size - i);
-			s[size - i - 1][1] = historySlang.get(i);
-			s[size - i - 1][2] = historyMean.get(i);
-		}
-		return s;
-	}
-      public String[] quizSlang(int type) {
-		String s[] = new String[6];
-		if (type == 1) {
-			// Random a number
-			String[] slangRandom = this.RandomSlang();
-			s[0] = slangRandom[0];
-			int rand = randommath(1, 4);
-			s[rand] = slangRandom[1];
-			s[5] = slangRandom[1];
-			for (int i = 1; i <= 4; i++) {
-				if (rand == i)
-					continue;
-				else {
-					String[] slangRand = this.RandomSlang();
-					while (slangRand[0] == s[0]) {
-						slangRand = this.RandomSlang();
-					}
-					s[i] = slangRand[1];
-				}
-			}
-		} else {
-			// Random a number
-			String[] slangRandom = this.RandomSlang();
-			s[0] = slangRandom[1];
-			int rand = randommath(1, 4);
-			s[rand] = slangRandom[0];
-			s[5] = slangRandom[0];
-			for (int i = 1; i <= 4; i++) {
-				if (rand == i)
-					continue;
-				else {
-					String[] slangRand = this.RandomSlang();
-					while (slangRand[0] == s[0]) {
-						slangRand = this.RandomSlang();
-					}
-					s[i] = slangRand[0];
-				}
-			}
-		}
+    public void saveHistoryFind(String slag, String meaning) throws Exception {
+        File filehistory = new File(fils_historyfind);
+        FileWriter fr = new FileWriter(filehistory, true);
+        fr.write(slag + "`" + meaning + "\n");
+        fr.close();
+    }
 
-		return s;
-	}
-     
+    public String[][] readHistoryFind() {
+        List<String> historySlang = new ArrayList<>();
+        List<String> historyMean = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(fils_historyfind));
+            scanner.useDelimiter("`");
+            String temp = scanner.next();
+            String[] part = scanner.next().split("\n");
+            historySlang.add(temp);
+            historyMean.add(part[0]);
+            while (scanner.hasNext()) {
+                temp = part[1];
+                part = scanner.next().split("\n");
+                historySlang.add(temp);
+                historyMean.add(part[0]);
+            }
+            scanner.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        int size = historySlang.size();
+        String s[][] = new String[size][3];
+        for (int i = 0; i < size; i++) {
+            s[size - i - 1][0] = String.valueOf(size - i);
+            s[size - i - 1][1] = historySlang.get(i);
+            s[size - i - 1][2] = historyMean.get(i);
+        }
+        return s;
+    }
+
+    public String[] quizSlang(int type) {
+        String s[] = new String[6];
+        if (type == 1) {
+            // Random a number
+            String[] slangRandom = this.RandomSlang();
+            s[0] = slangRandom[0];
+            int rand = randommath(1, 4);
+            s[rand] = slangRandom[1];
+            s[5] = slangRandom[1];
+            for (int i = 1; i <= 4; i++) {
+                if (rand == i) {
+                    continue;
+                } else {
+                    String[] slangRand = this.RandomSlang();
+                    while (slangRand[0] == s[0]) {
+                        slangRand = this.RandomSlang();
+                    }
+                    s[i] = slangRand[1];
+                }
+            }
+        } else {
+            // Random a number
+            String[] slangRandom = this.RandomSlang();
+            s[0] = slangRandom[1];
+            int rand = randommath(1, 4);
+            s[rand] = slangRandom[0];
+            s[5] = slangRandom[0];
+            for (int i = 1; i <= 4; i++) {
+                if (rand == i) {
+                    continue;
+                } else {
+                    String[] slangRand = this.RandomSlang();
+                    while (slangRand[0] == s[0]) {
+                        slangRand = this.RandomSlang();
+                    }
+                    s[i] = slangRand[0];
+                }
+            }
+        }
+
+        return s;
+    }
+
 }
