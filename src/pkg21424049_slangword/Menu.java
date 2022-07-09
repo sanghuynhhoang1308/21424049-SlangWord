@@ -72,7 +72,7 @@ public class Menu extends JFrame implements ActionListener {
         btn6.setFont(new Font("Serif", Font.PLAIN, 14));
         btn6.setFocusable(false);
 
-         btn7 = new JButton("7. Reset SlangWord");
+        btn7 = new JButton("7. Reset SlangWord");
         btn7.addActionListener(this);
         btn7.setFont(new Font("Serif", Font.PLAIN, 14));
         btn7.setFocusable(false);
